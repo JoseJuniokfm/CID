@@ -103,6 +103,7 @@ hr{
     display:inline-block;
     margin-right: 50px;
     transition: 0.5s ease-in-out;
+    cursor: pointer;
 }
 
 .card h2{
