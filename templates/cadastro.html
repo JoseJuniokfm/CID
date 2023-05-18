@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/cadastro.css">
+    <link rel="stylesheet" href="/static/css/cadastro.css">
     <title>Study-cadastro</title>
 </head>
 <body>
     <section class="main-cadastro">
         <div class="left-cadastro">
             <h1>Cadastre-se no <span>study</span> <br>E entre para nosso time</h1>
-            <img src="static/assets/svg-cadastro.svg" class="left-image" alt="imagem login">
+            <img src="/static/assets/svg-cadastro.svg" class="left-image" alt="imagem login">
         </div>
         <div class="right-cadastro">
             <div class="card-cadastro">
-                <form action="/aluno" method="post">
+                <form action="/usuarios/create" method="post">
                     <h1>Crie sua conta</h1>
                     <div class="textfield-2">
                         <label for="usuario">Usuário</label>
@@ -29,7 +29,12 @@
                         <label for="senha">Senha</label>
                         <input type="password" id="senha" name="senha" placeholder="Senha">
                     </div>
+                  <div class="textfield-2">
+                      <label for="senha">Confirmar senha</label>
+                      <input type="password" id="senha" name="senha2" placeholder="Digite a senha novamente">
+                  </div>
                     <input class="btn-cadastro" type="submit" value="criar">
+                  
                 </form>
             </div>
         </div>

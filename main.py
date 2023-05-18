@@ -1,6 +1,20 @@
 from flask import Flask, render_template, request
+from flask import Blueprint
+from database import db
+from flask_migrate import Migrate
+from usuarios import bp_usuarios
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'palavra-secreta'
+conexao = "sqlite:///meubanco.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = conexao
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.register_blueprint(bp_usuarios, url_prefix='/usuarios')
+
+db.init_app(app)
+migrate = Migrate(app, db)
+
+bp_usuarios = Blueprint("usuarios", __name__, template_folder='templates')
 
 @app.route('/')
 def index():
@@ -48,15 +62,15 @@ def dados():
 def sobre():
   return render_template('sobre.html')
 
-
-@app.route('/entrar', defaults={"id":"digite o valor 1 ou 2"})
+@app.route('/entrar', defaults={"id":"O parâmetro da rota não foi passado, por favor digite o valor cadastro ou login!"})
 @app.route('/entrar/<id>')
 def dado(id):
-  id = int(id)
-  if id == 1:
+  if id == 'cadastro':
     return render_template('cadastro.html', id=id)
-  elif id == 2:
+  elif id == 'login':
     return render_template('login.html', id=id)
   else:
     return render_template('entrar.html')
+
+
 app.run(host='0.0.0.0', port=81)

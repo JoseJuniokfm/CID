@@ -8,6 +8,14 @@
     <title>Study-entrar</title>
 </head>
 <body>
-    <h1>Digite 1 ou 2</h1>
+   {%extends 'base.html'%}
+  {%block conteudo%}
+    <section class="main-default">
+        <div class="box">
+          <p>O parâmetro da rota não foi passado, por favor digite o valor cadastro ou login!</p>
+      </div>
+      <img id="img" src='static/assets/Logotipo-study.png'/>
+    </section>
+  {%endblock%}
 </body>
 </html>
